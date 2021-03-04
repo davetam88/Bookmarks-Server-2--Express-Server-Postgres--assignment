@@ -4,7 +4,13 @@ Bookmarks-Server-2--Express-Server-Postgres--assignment
 
 ## >> Database
 
-bookmark is the name of the database, bokmark_items is the table.
+Database bookmark and bookmark-test was used and  bokmark_items is the databae table.
+
+## >> Screenshots
+
+Use of Postgrator's Migrations technique to manage the creation of tables,relations and rollback etc.
+![main page](images/main.jpg)
+
 
 # Express Boilerplate!
 
