@@ -4,7 +4,7 @@ Bookmarks-Server-2--Express-Server-Postgres--assignment
 
 ## >> Database
 
-Database bookmark and bookmark-test was used and  bokmark_items is the databae table.
+Database bookmark and bookmark-test were used and bookmark_items is the databae table.
 
 ## >> Screenshots
 
@@ -12,7 +12,7 @@ Use of Postgrator's Migrations technique to manage the creation of tables,relati
 ![main page](images/main.jpg)
 
 
-# Express Boilerplate!
+# Express Boilerplate! 
 
 This is a boilerplate project used for starting new projects!
 
