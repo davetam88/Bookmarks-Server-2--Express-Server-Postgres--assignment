@@ -16,7 +16,7 @@ Integrated test was developed in tandem with API code development by using Mocha
 
 Database bookmark and bookmark-test were used and bookmark_items is the database table.
 
-## >> Suported end points
+## >> Supported end points
 
 ```
 > GET /bookmarks = to read all the bookmarks
