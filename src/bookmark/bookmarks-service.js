@@ -1,6 +1,5 @@
 const BookmarkService = {
   getAllBookmarks(db) {
-
     return db('bookmark_items')
       .select('*');
   },
@@ -18,6 +17,7 @@ const BookmarkService = {
       .where({ id })
       .first();
   },
+  // .first, select the first item found.
 
   deleteBookmark(db, id) {
     return db('bookmark_items')
@@ -33,6 +33,7 @@ const BookmarkService = {
 };
 
 module.exports = BookmarkService;
+
 
 
 
