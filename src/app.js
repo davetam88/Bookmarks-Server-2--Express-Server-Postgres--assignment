@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
   res.send('Hello, world!')
 })
 
-app.use('/bookmarks', bookmarksRouter)
+app.use('/api/bookmarks', bookmarksRouter)
 
 app.use(function errorHandler(error, req, res, next) {
   let response

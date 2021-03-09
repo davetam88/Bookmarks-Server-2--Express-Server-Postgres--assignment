@@ -35,5 +35,3 @@ const BookmarkService = {
 module.exports = BookmarkService;
 
 
-
-
