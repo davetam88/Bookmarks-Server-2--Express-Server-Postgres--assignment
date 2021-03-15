@@ -1,10 +1,21 @@
 const path = require('path')
 const express = require('express')
 const xss = require('xss')
+const logger = require('../logger')
 const BookmarksService = require('./bookmarks-service')
+const { getBookmarkValidationError } = require('./bookmark-validator')
 
 const bookmarksRouter = express.Router()
 const jsonParser = express.json()
+
+const serializeBookmark = bookmark => ({
+  id: bookmark.id,
+  title: xss(bookmark.title),
+  url: bookmark.url,
+  description: xss(bookmark.description),
+  rating: Number(bookmark.rating),
+})
+
 
 // for / get and post 
 bookmarksRouter
@@ -15,16 +26,16 @@ bookmarksRouter
       req.app.get('db')
     )
       .then(bookmarks => {
-        res.json(bookmarks)
+        res.json(bookmarks.map(serializeBookmark))
       })
       .catch(next)
   })
 
   .post(jsonParser, (req, res, next) => {
     const { title, url, description, rating } = req.body
-    const newBookmark = { title, url, description, rating }
+    const newBookmark = { title, url, rating }
 
-    // error check for all 4 keys
+    // check for required fields
     for (const [key, value] of Object.entries(newBookmark))
     {
       if (value == null)
@@ -34,12 +45,9 @@ bookmarksRouter
         })
       }
     }
-    if (rating < 1 || rating > 6)
-    {
-      return res.status(400).json({
-        error: { message: `Rating must be a number between 1 to 5` }
-      })
-    }
+
+    const error = getBookmarkValidationError(newBookmark)
+
 
     BookmarksService.insertBookmark(
       req.app.get('db'),
@@ -109,6 +117,8 @@ bookmarksRouter
         }
       })
     }
+    const error = getBookmarkValidationError(bookmarkToUpdate)
+    if (error) return res.status(400).send(error)
 
     BookmarksService.updateBookmark(
       req.app.get('db'),

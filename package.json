@@ -23,6 +23,8 @@
     "knex": "^0.21.18",
     "morgan": "^1.10.0",
     "pg": "^8.5.1",
+    "valid-url": "^1.0.9",
+    "winston": "^3.3.3",
     "xss": "^1.0.8"
   },
   "devDependencies": {
