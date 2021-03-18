@@ -8,7 +8,9 @@ const BookmarkService = {
     return db('bookmark_items')
       .insert(data)
       .returning('*')
-      .then(rows => rows[0]);
+      .then(rows => ({
+        ...data, id: rows[0].id
+      }))
   },
 
   getById(db, id) {

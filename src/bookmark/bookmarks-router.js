@@ -54,6 +54,7 @@ bookmarksRouter
       newBookmark
     )
       .then(bookmark => {
+        // console.log(`bookmark :>> `, bookmark) ||
         res
           .status(201)
           // .location(`/bookmarks/${bookmark.id}`)
@@ -103,7 +104,6 @@ bookmarksRouter
       })
       .catch(next)
   })
-
   .patch(jsonParser, (req, res, next) => {
     const { title, url } = req.body
     const bookmarkToUpdate = { title, url }
